@@ -2,11 +2,12 @@ from Minsung.util import *
 
 def add_face(image, face_list_id, user_data=None, target_face=None):
     headers = {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/octet-stream',
         'Ocp-Apim-Subscription-Key': KEY
     }
+    data = open(image,'rib')
     json = {
-        "url": image
+        "url": data
     }
     params = {
         'userData': user_data,
