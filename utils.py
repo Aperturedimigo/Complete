@@ -9,7 +9,7 @@ face_list_id = open('name.txt', 'r').readline()
 
 #Initial Settings
 def getName(name):
-    name = ''
+    name = name
     with open('name.txt', 'w') as f:
         f.write(name)
         f.close()
