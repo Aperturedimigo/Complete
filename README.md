@@ -9,12 +9,13 @@ PrivaSee완성본만 올리는 곳입니다. 클론 한뒤에 완성이 됬다 �
 ```
 git clone http://github.com/Aperturedimigo/Complete.git
 cd Complete
-sudo pip install virtualenv
+sudo pip install virtualenv 
 virtualenv venv
 source venv/bin/activate 
 pip install yaml
 pip install cognitive_face
 pip install requests
+sudo apt-get install python3-pyqt5
 ```
 
 킬때마다 하는거 :
