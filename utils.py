@@ -14,7 +14,6 @@ def setName(name):
 def createMainImage(face_list_id, image):
     fl.create(face_list_id)
     data = yaml.load(fl.add_face(image, face_list_id))['persistedFaceId']
-    print(data)
 
     with open('ps1.txt', 'w') as f:
         f.write(data)
@@ -49,5 +48,5 @@ def deleteDatas():
     os.remove('ps1.txt')
     os.remove('ps2.txt')
     os.remove('number.txt')
-    fl.remove(face_list_id)
+    fl.remove(open('name.txt', 'r').readline())
 
