@@ -1,7 +1,7 @@
 #import Minsung.Face_list as fl
 import Minsung.Face as fa
 import os
-import picamera
+#import picamera
 
 #Initial Settings
 
@@ -15,7 +15,10 @@ def Picapture():
     with picamera.Picamera() as camera:
         camera.resolution = (1024, 768)
         camera.start_preview()
-        camera.capture('1.jpg')
+        camera.capture('2.jpg')
+
+def deleteSecondImage():
+    os.remove('2.jpg')
 
 def createMainImage(image):
     data = fa.detect(image)[0]["faceId"]
@@ -35,7 +38,7 @@ def compare():
     face_id = open('ps1.txt', 'r').readline()
     another_face_id = open('ps2.txt', 'r').readline()
     data =fa.verify(face_id, another_face_id)['confidence']
-    if data > 0.6:
+    if data > 0.65:
         print(data)
         return True
     else:
