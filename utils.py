@@ -1,7 +1,7 @@
 import Minsung.Face_list as fl
 import Minsung.Face as fa
 import yaml, os
-#import picamera
+import picamera
 
 #Initial Settings
 
@@ -12,8 +12,11 @@ def setName(name):
         f.close()
     print("이름이 성공적으로 저장되었습니다.")
 
-def capture():
-    return False
+def Picapture():
+    with picamera.Picamera() as camera:
+        camera.resolution = (1024, 768)
+        camera.start_preview()
+        camera.capture('1.jpg')
 
 def createMainImage(image):
     data = fa.detect(image)[0]["faceId"]
@@ -33,13 +36,12 @@ def compare():
     face_id = open('ps1.txt', 'r').readline()
     another_face_id = open('ps2.txt', 'r').readline()
     data =fa.verify(face_id, another_face_id)['confidence']
-    if data > 0.7:
-        print("우와 성공했어요 시발 드디어 오류를 고쳤어요 !!")
+    if data > 0.6:
         print(data)
+        return True
     else:
-        print("넌 얼굴이 다르다 거부한다.")
-
-
+        print(data)
+        return False
 
 #Secure number setting
 def saveNumbers(num):
@@ -50,15 +52,16 @@ def saveNumbers(num):
 def chkNumbers(num):
     if open('number.txt', 'r').readline() == str(num):
         print("올바른 사용자입니다.")
+        return True
     else:
         print("올바르지 않은 사용자입니다.")
+        return False
 
 #Delete settings
 def deleteDatas():
     os.remove('ps1.txt')
     os.remove('ps2.txt')
     os.remove('number.txt')
-    fl.delete(open('name.txt', 'r').readline())
     os.remove('name.txt')
     print("초기화가 끝났습니다.")
 
