@@ -5,7 +5,7 @@ import requests
 
 import cognitive_face as CF
 
-KEY = open("./Minsung/key.txt", 'r').readline()
+KEY = open('key.txt', 'r').readline()
 _BASE_URL = 'https://api.projectoxford.ai/face/v1.0/'
 TIME_SLEEP = 1
 

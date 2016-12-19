@@ -1,6 +1,7 @@
 #import Minsung.Face_list as fl
 import Minsung.Face as fa
 import os
+import re
 #import picamera
 
 #Initial Settings
@@ -17,7 +18,9 @@ def Picapture():
         camera.start_preview()
         camera.capture('2.jpg')
 
-
+def regex(name):
+    name = name
+    res = re.compile('[^ ㄱ-ㅣ가-힣]+')
 def createMainImage(image):
     data = fa.detect(image)[0]["faceId"]
     print(data)
