@@ -14,17 +14,16 @@ def setName(name):
 def createMainImage(face_list_id, image):
     fl.create(face_list_id)
     data = yaml.load(fl.add_face(image, face_list_id))['persistedFaceId']
+    print(data)
 
 #Verify Image
 def getSecondImage(face_list_id, image):
     data = yaml.load(fl.add_face(image,face_list_id))['persistedFaceId']
-
+    print(data)
 def compare(image):
     face_list_id = open('name.txt', 'r').readline()
     face_id = fa.detect(image)[0]['faceId']
     print(face_id)
-    print(face_list_id)
-    print(type(face_id))
     data = fa.find_similars(face_id,face_list_id)
     print(data)
 

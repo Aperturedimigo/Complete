@@ -17,8 +17,7 @@ def detect(image, face_id=True, landmarks=False, attributes=''):
     return request('POST', url, headers=headers, params=params, json=json)
 
 
-def find_similars(face_id, face_list_id=None,
-                  max_candidates_return=100, mode='matchPerson'):
+def find_similars(face_id, face_list_id):
 
     url = 'findsimilars'
     headers ={
@@ -26,14 +25,14 @@ def find_similars(face_id, face_list_id=None,
         'Ocp-Apim-Subscription-Key': KEY,
     }
 
-    data ={
+    json ={
     "faceId":face_id,
     "faceListId":face_list_id,
-    "maxNumOfCandidatesReturned":max_candidates_return,
-    "mode": mode
+    "maxNumOfCandidatesReturned":100,
+    "mode": "matchPerson"
 }
 
-    return request('POST', url, data, headers=headers)
+    return request('POST', url, json=json, headers=headers)
 
 
 def group(face_ids):
