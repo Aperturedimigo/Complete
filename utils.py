@@ -1,6 +1,6 @@
-import Minsung.Face_list as fl
+#import Minsung.Face_list as fl
 import Minsung.Face as fa
-import yaml, os
+import os
 import picamera
 
 #Initial Settings
@@ -11,7 +11,6 @@ def setName(name):
         f.write(name)
         f.close()
     print("이름이 성공적으로 저장되었습니다.")
-
 def Picapture():
     with picamera.Picamera() as camera:
         camera.resolution = (1024, 768)
