@@ -17,8 +17,6 @@ def Picapture():
         camera.start_preview()
         camera.capture('2.jpg')
 
-def deleteSecondImage():
-    os.remove('2.jpg')
 
 def createMainImage(image):
     data = fa.detect(image)[0]["faceId"]
@@ -54,9 +52,11 @@ def saveNumbers(num):
 def chkNumbers(num):
     if open('number.txt', 'r').readline() == str(num):
         print("올바른 사용자입니다.")
+        os.remove('2.jpg')
         return True
     else:
         print("올바르지 않은 사용자입니다.")
+        os.remove('2.jpg')
         return False
 
 #Delete settings
