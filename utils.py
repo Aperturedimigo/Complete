@@ -1,7 +1,7 @@
 import Minsung.Face_list as fl
 import Minsung.Face as fa
 import yaml, os
-
+from ast import literal_eval
 
 #Initial Settings
 
@@ -15,21 +15,19 @@ def createMainImage(face_list_id, image):
     fl.create(face_list_id)
     data = yaml.load(fl.add_face(image, face_list_id))['persistedFaceId']
 
-    with open('ps1.txt', 'w') as f:
-        f.write(data)
-        f.close()
-
-
 #Verify Image
 def getSecondImage(face_list_id, image):
     data = yaml.load(fl.add_face(image,face_list_id))['persistedFaceId']
-    with open('ps2.txt', 'w') as f:
-        f.write(data)
-        f.close()
 
-def compare():
-    if open('ps1.txt', 'r').readline() == open('ps2.txt', 'r').readline():
-        return True
+def compare(image):
+    face_list_id = open('name.txt', 'r').readline()
+    face_id = fa.detect(image)[0]['faceId']
+    print(face_id)
+    print(face_list_id)
+    print(type(face_id))
+    data = fa.find_similars(face_id,face_list_id)
+    print(data)
+
 
 #Secure number setting
 def saveNumbers(num):
@@ -48,5 +46,6 @@ def deleteDatas():
     os.remove('ps1.txt')
     os.remove('ps2.txt')
     os.remove('number.txt')
-    fl.remove(open('name.txt', 'r').readline())
+    fl.delete(open('name.txt', 'r').readline())
+    print("초기화가 끝났습니다.")
 

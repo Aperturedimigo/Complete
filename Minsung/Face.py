@@ -1,28 +1,39 @@
 from Minsung.util import *
 
-def detect(image):
+def detect(image, face_id=True, landmarks=False, attributes=''):
     url = 'detect'
-    headers = {'Content-Type': 'application/octet-stream',
-               'Ocp-Apim-Subscription-Key': KEY,
-               'Content-Length': 0,
-               }
-    data = open(image, "rb")
-    return request('POST', url,data,headers)
-
-
-def find_similars(face_id, face_list_id=None, face_ids=None,
-                  max_candidates_return=20, mode='matchPerson'):
-
-    url = 'findsimilars'
-    json = {
-        'faceId': face_id,
-        'faceListId': face_list_id,
-        'faceIds': face_ids,
-        'maxNumOfCandidatesReturned': max_candidates_return,
-        'mode': mode,
+    headers ={
+        'Content-Type': 'application/json',
+        'Ocp-Apim-Subscription-Key': KEY,
+    }
+    json ={
+        'url' : image
     }
 
-    return request('POST', url, json=json)
+    params = {
+        'returnFaceId': face_id,
+    }
+
+    return request('POST', url, headers=headers, params=params, json=json)
+
+
+def find_similars(face_id, face_list_id=None,
+                  max_candidates_return=100, mode='matchPerson'):
+
+    url = 'findsimilars'
+    headers ={
+        'Content-Type': 'application/json',
+        'Ocp-Apim-Subscription-Key': KEY,
+    }
+
+    data ={
+    "faceId":face_id,
+    "faceListId":face_list_id,
+    "maxNumOfCandidatesReturned":max_candidates_return,
+    "mode": mode
+}
+
+    return request('POST', url, data, headers=headers)
 
 
 def group(face_ids):
