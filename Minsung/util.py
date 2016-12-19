@@ -5,7 +5,7 @@ import requests
 
 import cognitive_face as CF
 
-KEY = "7fc4c113fee941e1b9e964ab98f559a7"
+KEY = open("./Minsung/key.txt", 'r').readline()
 _BASE_URL = 'https://api.projectoxford.ai/face/v1.0/'
 TIME_SLEEP = 1
 
@@ -77,7 +77,7 @@ def training(person_group_id):
         if res['status'] in ('succeeded', 'failed'):
             break
         print('The training of Person Group {} is onging: #{}'.format(
-            person_group_id, imdex))
+            person_group_id, index))
         time.sleep(2**index)
         index += 1
 

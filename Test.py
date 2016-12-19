@@ -1,0 +1,15 @@
+from utils import *
+
+name = input("이름을 입력하세요: ")
+setName(name)
+print('-'*50)
+print("설정을 시작합니다.")
+createMainImage(name, 'http://cfile9.uf.tistory.com/image/211FFE47565181462DD985')
+print("두번째 이미지를 설정합니다.")
+getSecondImage(name, 'http://img.tenasia.hankyung.com/webwp_kr/wp-content/uploads/2015/09/2015090714401115495-540x811.jpg')
+print('-'*50)
+print("비밀번호를 설정해주세요")
+num1 =input("비밀번호를 입력해주세요 :")
+saveNumbers(num1)
+num2 = input("로그인 하시기 위해 비밀번호를 입력해주세요: ")
+chkNumbers(num2)

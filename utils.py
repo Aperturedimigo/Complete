@@ -1,30 +1,29 @@
 import Minsung.Face_list as fl
-import Minsung.Face as f
+import Minsung.Face as fa
 import yaml, os
-
-face_list_id = open('name.txt', 'r').readline()
-
-
 
 
 #Initial Settings
-def getName(name):
-    name = name
+
+def setName(name):
+    name = name.lower()
     with open('name.txt', 'w') as f:
         f.write(name)
         f.close()
 
 def createMainImage(face_list_id, image):
     fl.create(face_list_id)
-    data = yaml.load(fl.add_face(image, face_list_id))
+    data = yaml.load(fl.add_face(image, face_list_id))['persistedFaceId']
+    print(data)
+
     with open('ps1.txt', 'w') as f:
-        f.write(data["persistedFaceId"])
+        f.write(data)
         f.close()
 
 
 #Verify Image
 def getSecondImage(face_list_id, image):
-    data = yaml.load(fl.add_face(image,face_list_id))
+    data = yaml.load(fl.add_face(image,face_list_id))['persistedFaceId']
     with open('ps2.txt', 'w') as f:
         f.write(data)
         f.close()
@@ -34,16 +33,16 @@ def compare():
         return True
 
 #Secure number setting
-def chkNumbers(num):
-    if open('number.txt', 'r').readline() == str(num):
-        return True
-    else:
-        return False
-
 def saveNumbers(num):
     with open('number.txt', 'w') as f:
         f.write(num)
         f.close()
+
+def chkNumbers(num):
+    if open('number.txt', 'r').readline() == str(num):
+        print("올바른 사용자입니다.")
+    else:
+        print("올바르지 않은 사용자입니다.")
 
 #Delete settings
 def deleteDatas():

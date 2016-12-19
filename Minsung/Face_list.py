@@ -2,12 +2,11 @@ from Minsung.util import *
 
 def add_face(image, face_list_id, user_data=None, target_face=None):
     headers = {
-        'Content-Type': 'application/octet-stream',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': KEY
     }
-    data = open(image,'rib')
     json = {
-        "url": data
+        "url": image
     }
     params = {
         'userData': user_data,
@@ -15,9 +14,7 @@ def add_face(image, face_list_id, user_data=None, target_face=None):
     }
     data = requests.post('https://api.projectoxford.ai/face/v1.0/facelists/{}/persistedFaces'.format(face_list_id),
                          headers=headers, params=params, json=json)
-    perseid = data.text
-    dict(perseid)
-    print(perseid['persistedFaceId'])
+    return data.text
 
 
 
