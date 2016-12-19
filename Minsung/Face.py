@@ -1,6 +1,6 @@
 from Minsung.util import *
 
-def detect(image, face_id=True, landmarks=False, attributes=''):
+def detect(image, face_id=True):
     url = 'detect'
     headers ={
         'Content-Type': 'application/json',
@@ -59,21 +59,14 @@ def identify(face_ids, person_group_id, max_candidates_return=1,
     return request('POST', url, json=json)
 
 
-def verify(face_id, another_face_id=None, person_group_id=None,
-           person_id=None):
+def verify(face_id, another_face_id):
 
     url = 'verify'
-    json = {}
-    if another_face_id:
-        json.update({
+    json = {
             'faceId1': face_id,
             'faceId2': another_face_id,
-        })
-    else:
-        json.update({
-            'faceId': face_id,
-            'personGroupId': person_group_id,
-            'personId': person_id,
-        })
+        }
+
+
 
     return request('POST', url, json=json)

@@ -1,7 +1,7 @@
 import Minsung.Face_list as fl
 import Minsung.Face as fa
 import yaml, os
-from ast import literal_eval
+#import picamera
 
 #Initial Settings
 
@@ -10,22 +10,35 @@ def setName(name):
     with open('name.txt', 'w') as f:
         f.write(name)
         f.close()
+    print("이름이 성공적으로 저장되었습니다.")
 
-def createMainImage(face_list_id, image):
-    fl.create(face_list_id)
-    data = yaml.load(fl.add_face(image, face_list_id))['persistedFaceId']
+def capture():
+    return False
+
+def createMainImage(image):
+    data = fa.detect(image)[0]["faceId"]
     print(data)
+    with open('ps1.txt', 'w') as f:
+        f.write(data)
+        f.close()
 
 #Verify Image
-def getSecondImage(face_list_id, image):
-    data = yaml.load(fl.add_face(image,face_list_id))['persistedFaceId']
+def getSecondImage(image):
+    data = fa.detect(image)[0]["faceId"]
     print(data)
-def compare(image):
-    face_list_id = open('name.txt', 'r').readline()
-    face_id = fa.detect(image)[0]['faceId']
-    print(face_id)
-    data = fa.find_similars(face_id,face_list_id)
-    print(data)
+    with open('ps2.txt', 'w') as f:
+        f.write(data)
+        f.close()
+def compare():
+    face_id = open('ps1.txt', 'r').readline()
+    another_face_id = open('ps2.txt', 'r').readline()
+    data =fa.verify(face_id, another_face_id)['confidence']
+    if data > 0.7:
+        print("우와 성공했어요 시발 드디어 오류를 고쳤어요 !!")
+        print(data)
+    else:
+        print("넌 얼굴이 다르다 거부한다.")
+
 
 
 #Secure number setting
@@ -46,5 +59,6 @@ def deleteDatas():
     os.remove('ps2.txt')
     os.remove('number.txt')
     fl.delete(open('name.txt', 'r').readline())
+    os.remove('name.txt')
     print("초기화가 끝났습니다.")
 
