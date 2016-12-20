@@ -636,7 +636,7 @@ class Form(QWidget):
         self.passwordtoregister()
 
     def recapture_captureContact(self):
-
+        return
 
     def recapture_submitContact(self):
         self.allHide()
