@@ -9,7 +9,7 @@ from PyQt5.QtCore import *
 windowSizeX = 440
 windowSizeY = 250
 
-logoFilePath = 'D:\logo.png'
+logoFilePath = 'logo.png'
 
 fontMajor = 'Arial'
 fontMinor = 'Dotum'
@@ -30,7 +30,7 @@ class Form(QWidget):
 
         nameLabel = QLabel()
         nameLabel.setText("Please input your name below.")
-        newfont = QtGui.QFont(fontMinor, 16, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 16 )
         nameLabel.setFont(newfont)
         nameLabel.setAlignment(Qt.AlignCenter)
 

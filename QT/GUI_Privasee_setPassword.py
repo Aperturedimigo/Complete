@@ -23,19 +23,19 @@ class Form(QWidget):
 
         nameLabel = QLabel()
         nameLabel.setText("User : %s" % userName)
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel.setFont(newfont)
         nameLabel.setAlignment(Qt.AlignCenter)
 
         nameLabel2 = QLabel()
         nameLabel2.setText("Picture uploaded.")
-        newfont = QtGui.QFont(fontMinor, 16, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 16 )
         nameLabel2.setFont(newfont)
         nameLabel2.setAlignment(Qt.AlignCenter)
 
         nameLabel3 = QLabel()
         nameLabel3.setText("Please Input your password below : ")
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel3.setFont(newfont)
         nameLabel3.setAlignment(Qt.AlignCenter)
 

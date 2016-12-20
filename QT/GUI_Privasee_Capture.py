@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPainter
 from PyQt5.QtGui import QPixmap
-
+import picamera
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
@@ -26,13 +26,13 @@ class Form(QWidget):
 
         nameLabel = QLabel()
         nameLabel.setText("User : %s" % userName)
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel.setFont(newfont)
         nameLabel.setAlignment(Qt.AlignCenter)
 
         nameLabel2 = QLabel()
         nameLabel2.setText("Capture your face properly.")
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel2.setFont(newfont)
         nameLabel2.setAlignment(Qt.AlignCenter)
 
@@ -69,7 +69,11 @@ class Form(QWidget):
 
     def captureContact(self):
         #picamera capture & make file
-        return
+        with picamera.Picamera() as camera:
+            camera.resolution = (1024, 768)
+            camera.start_preview()
+            camera.capture('1.jpg')
+
 
     def submitContact(self):
         '''call GUI_Privasee_Register.py'''

@@ -23,7 +23,7 @@ class Form(QWidget):
 
         nameLabel = QLabel()
         nameLabel.setText("User : %s" % userName)
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel.setFont(newfont)
         nameLabel.setAlignment(Qt.AlignCenter)
 

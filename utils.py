@@ -19,7 +19,7 @@ def Picapture():
         camera.capture('2.jpg')
 
 def regex(name):
-    name = name
+    name = name8
     res = re.compile('[^ ㄱ-ㅣ가-힣]+')
 def createMainImage(image):
     data = fa.detect(image)[0]["faceId"]

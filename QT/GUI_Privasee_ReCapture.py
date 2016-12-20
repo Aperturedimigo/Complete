@@ -26,13 +26,13 @@ class Form(QWidget):
 
         nameLabel = QLabel()
         nameLabel.setText("User : %s" % userName)
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel.setFont(newfont)
         nameLabel.setAlignment(Qt.AlignCenter)
 
         nameLabel2 = QLabel()
         nameLabel2.setText("Capture your face again.")
-        newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Medium)
+        newfont = QtGui.QFont(fontMinor, 12 )
         nameLabel2.setFont(newfont)
         nameLabel2.setAlignment(Qt.AlignCenter)
 
