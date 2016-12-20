@@ -2,16 +2,19 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPainter
 from PyQt5.QtGui import QPixmap
-import picamera
+#import picamera
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from utils import *
 windowSizeX = 440
 windowSizeY = 250
 
-captureFilePath = 'D:\capture.png'
-userName = 'Aperture'
-logoFilePath = 'D:\logo.png'
+captureFilePath = '~capture.png'
+if os.path.exists('name.txt') == True:
+    userName = open('name.txt', 'r').readline()
+else:
+    userName = 'Aperture'
+logoFilePath = '~logo.png'
 
 fontMajor = 'Arial'
 fontMinor = 'Dotum'
@@ -159,7 +162,7 @@ class Form(QWidget):
         self.register_yesButton.clicked.connect(self.register_yesContact)
 
         self.setpassword_nameLabel = QLabel()
-        self.setpassword_nameLabel.setText("User : {}" userName)
+        self.setpassword_nameLabel.setText("User : {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.setpassword_nameLabel.setFont(newfont)
         self.setpassword_nameLabel.setAlignment(Qt.AlignCenter)

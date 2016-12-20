@@ -5,7 +5,7 @@ import requests
 
 import cognitive_face as CF
 
-KEY = open('key.txt', 'r').readline()
+KEY = '7fc4c113fee941e1b9e964ab98f559a7'
 _BASE_URL = 'https://api.projectoxford.ai/face/v1.0/'
 TIME_SLEEP = 1
 
