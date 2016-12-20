@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap
 import picamera
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-
+from utils import *
 windowSizeX = 440
 windowSizeY = 250
 
@@ -35,7 +35,7 @@ class Form(QWidget):
         self.tutorial_blankLabel = QLabel()
         self.tutorial_blankLabel.setText(" ")
 
-        self.tutorial_nextButton = QPushButton("Next")
+        self.tutorial_nextButton = QPushButton("다음")
 
         self.tutorial_nextButton.clicked.connect(self.tutorial_nextContact)
 
@@ -53,6 +53,7 @@ class Form(QWidget):
         self.username_nameLabel.setFont(newfont)
         self.username_nameLabel.setAlignment(Qt.AlignCenter)
 
+
         self.username_nameLabel2 = QLabel()
         self.username_nameLabel2.setText("Caution : If once input, you can't change name again.")
         newfont = QtGui.QFont(fontMinor, 9, QtGui.QFont.Bold)
@@ -65,8 +66,8 @@ class Form(QWidget):
         self.username_nameLine = QLineEdit()
         self.username_nameLine.setGeometry(QRect())
 
-        self.username_submitButton = QPushButton("Submit")
-        self.username_backButton = QPushButton("Back")
+        self.username_submitButton = QPushButton("저장")
+        self.username_backButton = QPushButton("이전")
 
         self.username_buttonLayoutH = QHBoxLayout()  # H : Horizontal Box
         self.username_buttonLayoutH2 = QHBoxLayout()  # H2 : Horizontal Box
@@ -87,7 +88,7 @@ class Form(QWidget):
         85번째 줄을 아마도, 바꾸게 되지 않을까 싶습니다.'''
 
         self.capture_nameLabel = QLabel()
-        self.capture_nameLabel.setText("User : %s" % userName)
+        self.capture_nameLabel.setText("User : {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.capture_nameLabel.setFont(newfont)
         self.capture_nameLabel.setAlignment(Qt.AlignCenter)
@@ -101,9 +102,9 @@ class Form(QWidget):
         self.capture_blankLabel = QLabel()
         self.capture_blankLabel.setText(" ")
 
-        self.capture_captureButton = QPushButton("Capture")
-        self.capture_submitButton = QPushButton("Submit")
-        self.capture_backButton = QPushButton("Back")
+        self.capture_captureButton = QPushButton("사진등록")
+        self.capture_submitButton = QPushButton("저장")
+        self.capture_backButton = QPushButton("이전")
 
         self.capture_buttonLayoutV = QVBoxLayout()  # V : Vertical Box
         self.capture_buttonLayoutH = QHBoxLayout()  # H : Horizontal Box
@@ -127,13 +128,13 @@ class Form(QWidget):
         self_capture_captureLabel에서 스트리밍하는 화면으로부터 캡쳐한 사진을 띄우는 방식입니다.'''
 
         self.register_nameLabel = QLabel()
-        self.register_nameLabel.setText("User : %s" % userName)
+        self.register_nameLabel.setText("User : {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.register_nameLabel.setFont(newfont)
         self.register_nameLabel.setAlignment(Qt.AlignCenter)
 
         self.register_nameLabel2 = QLabel()
-        self.register_nameLabel2.setText("Register?")
+        self.register_nameLabel2.setText("등록하시겠습니까?")
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Bold)
         self.register_nameLabel2.setFont(newfont)
         self.register_nameLabel2.setAlignment(Qt.AlignCenter)
@@ -141,9 +142,9 @@ class Form(QWidget):
         self.register_blankLabel = QLabel()
         self.register_blankLabel.setText(" ")
 
-        self.register_noButton = QPushButton("No")
+        self.register_noButton = QPushButton("아니요")
 
-        self.register_yesButton = QPushButton("Yes")
+        self.register_yesButton = QPushButton("네")
 
         self.register_buttonLayoutV = QVBoxLayout()  # V : Vertical Box
 
@@ -158,19 +159,19 @@ class Form(QWidget):
         self.register_yesButton.clicked.connect(self.register_yesContact)
 
         self.setpassword_nameLabel = QLabel()
-        self.setpassword_nameLabel.setText("User : %s" % userName)
+        self.setpassword_nameLabel.setText("User : {}" userName)
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.setpassword_nameLabel.setFont(newfont)
         self.setpassword_nameLabel.setAlignment(Qt.AlignCenter)
 
         self.setpassword_nameLabel2 = QLabel()
-        self.setpassword_nameLabel2.setText("Picture uploaded.")
+        self.setpassword_nameLabel2.setText("사진이 업로드되었습니다.")
         newfont = QtGui.QFont(fontMinor, 16, QtGui.QFont.Normal)
         self.setpassword_nameLabel2.setFont(newfont)
         self.setpassword_nameLabel2.setAlignment(Qt.AlignCenter)
 
         self.setpassword_nameLabel3 = QLabel()
-        self.setpassword_nameLabel3.setText("Please Input your password below : ")
+        self.setpassword_nameLabel3.setText("당신의 비밀번호를 입력해주세요. : ")
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.setpassword_nameLabel3.setFont(newfont)
         self.setpassword_nameLabel3.setAlignment(Qt.AlignCenter)
@@ -181,7 +182,7 @@ class Form(QWidget):
         self.setpassword_nameLine = QLineEdit()
         self.setpassword_nameLine.setGeometry(QRect())
 
-        self.setpassword_submitButton = QPushButton("Submit")
+        self.setpassword_submitButton = QPushButton("저장")
 
         self.setpassword_submitButton.clicked.connect(self.setpassword_submitContact)
 
@@ -197,7 +198,7 @@ class Form(QWidget):
         self.main_nameLabel.setAlignment(Qt.AlignCenter)
 
         self.main_nameLabel2 = QLabel()
-        self.main_nameLabel2.setText("Hello, %s" % userName)
+        self.main_nameLabel2.setText("Hello, {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Bold)
         self.main_nameLabel2.setFont(newfont)
         self.main_nameLabel2.setAlignment(Qt.AlignCenter)
@@ -208,9 +209,9 @@ class Form(QWidget):
         self.main_blankLabel = QLabel()
         self.main_blankLabel.setText(" ")
 
-        self.main_captureButton = QPushButton("Capture")
+        self.main_captureButton = QPushButton("사진등록")
 
-        self.main_registerButton = QPushButton("RE-register")
+        self.main_registerButton = QPushButton("재등록")
 
         self.main_buttonLayoutV = QVBoxLayout()  # V : Vertical Box
         self.main_buttonLayoutH = QHBoxLayout()  # H : Horizontal Box
@@ -228,13 +229,13 @@ class Form(QWidget):
         self.main_registerButton.clicked.connect(self.main_registerContact)
 
         self.passwordtoregister_nameLabel = QLabel()
-        self.passwordtoregister_nameLabel.setText("User : %s" % userName)
+        self.passwordtoregister_nameLabel.setText("User : {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.passwordtoregister_nameLabel.setFont(newfont)
         self.passwordtoregister_nameLabel.setAlignment(Qt.AlignCenter)
 
         self.passwordtoregister_nameLabel2 = QLabel()
-        self.passwordtoregister_nameLabel2.setText("To Re-register, Input your password below : ")
+        self.passwordtoregister_nameLabel2.setText("재등록을 위해 당신의 비밀번호를 입력해주세요. : ")
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Bold)
         self.passwordtoregister_nameLabel2.setFont(newfont)
         self.passwordtoregister_nameLabel2.setAlignment(Qt.AlignCenter)
@@ -245,8 +246,8 @@ class Form(QWidget):
         self.passwordtoregister_nameLine = QLineEdit()
         self.passwordtoregister_nameLine.setGeometry(QRect())
 
-        self.passwordtoregister_submitButton = QPushButton("Submit")
-        self.passwordtoregister_backButton = QPushButton("Back")
+        self.passwordtoregister_submitButton = QPushButton("저장")
+        self.passwordtoregister_backButton = QPushButton("이전")
 
         self.passwordtoregister_submitButton.clicked.connect(self.passwordtoregister_submitContact)
         self.passwordtoregister_backButton.clicked.connect(self.passwordtoregister_backContact)
@@ -256,21 +257,21 @@ class Form(QWidget):
         self.passwordtoregister_buttonLayoutH.addWidget(self.passwordtoregister_backButton)
 
         self.notyourface_nameLabel = QLabel()
-        self.notyourface_nameLabel.setText("You've got wrong face.")
+        self.notyourface_nameLabel.setText("넌 사물함의 주인이 아니야.")
         newfont = QtGui.QFont(fontMinor, 16, QtGui.QFont.Bold)
         self.notyourface_nameLabel.setFont(newfont)
         self.notyourface_nameLabel.setAlignment(Qt.AlignCenter)
 
-        self.notyourface_backButton = QPushButton("Back")
+        self.notyourface_backButton = QPushButton("이전")
         self.notyourface_backButton.clicked.connect(self.notyourface_lockContact)
 
         self.notyourpw_nameLabel = QLabel()
-        self.notyourpw_nameLabel.setText("You've got wrong password.")
+        self.notyourpw_nameLabel.setText("당신은 틀린 비밀번호를 입력했습니다.")
         newfont = QtGui.QFont(fontMinor, 16, QtGui.QFont.Bold)
         self.notyourpw_nameLabel.setFont(newfont)
         self.notyourpw_nameLabel.setAlignment(Qt.AlignCenter)
 
-        self.notyourpw_backButton = QPushButton("Back")
+        self.notyourpw_backButton = QPushButton("이전")
         self.notyourpw_backButton.clicked.connect(self.notyourpw_lockContact)
 
         self.recapture_captureLabel = QLabel()
@@ -279,13 +280,13 @@ class Form(QWidget):
          277번째 줄을 아마도, 바꾸게 되지 않을까 싶습니다.'''
 
         self.recapture_nameLabel = QLabel()
-        self.recapture_nameLabel.setText("User : %s" % userName)
+        self.recapture_nameLabel.setText("User : {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.recapture_nameLabel.setFont(newfont)
         self.recapture_nameLabel.setAlignment(Qt.AlignCenter)
 
         self.recapture_nameLabel2 = QLabel()
-        self.recapture_nameLabel2.setText("Capture your face again.")
+        self.recapture_nameLabel2.setText("당신의 얼굴을 다시 찍습니다.")
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.recapture_nameLabel2.setFont(newfont)
         self.recapture_nameLabel2.setAlignment(Qt.AlignCenter)
@@ -293,9 +294,9 @@ class Form(QWidget):
         self.recapture_blankLabel = QLabel()
         self.recapture_blankLabel.setText(" ")
 
-        self.recapture_captureButton = QPushButton("Capture")
-        self.recapture_submitButton = QPushButton("Submit")
-        self.recapture_backButton = QPushButton("Back")
+        self.recapture_captureButton = QPushButton("사진등록")
+        self.recapture_submitButton = QPushButton("저장")
+        self.recapture_backButton = QPushButton("이전")
 
         self.recapture_buttonLayoutV = QVBoxLayout()  # V : Vertical Box
         self.recapture_buttonLayoutH = QHBoxLayout()  # H : Horizontal Box
@@ -319,13 +320,13 @@ class Form(QWidget):
         self_recapture_captureLabel에서 스트리밍하는 화면으로부터 캡쳐한 사진을 띄우는 방식입니다.'''
 
         self.reregister_nameLabel = QLabel()
-        self.reregister_nameLabel.setText("User : %s" % userName)
+        self.reregister_nameLabel.setText("User : {}".format(userName))
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Normal)
         self.reregister_nameLabel.setFont(newfont)
         self.reregister_nameLabel.setAlignment(Qt.AlignCenter)
 
         self.reregister_nameLabel2 = QLabel()
-        self.reregister_nameLabel2.setText("Register?")
+        self.reregister_nameLabel2.setText("등록하시겠습니까?")
         newfont = QtGui.QFont(fontMinor, 12, QtGui.QFont.Bold)
         self.reregister_nameLabel2.setFont(newfont)
         self.reregister_nameLabel2.setAlignment(Qt.AlignCenter)
@@ -333,9 +334,9 @@ class Form(QWidget):
         self.reregister_blankLabel = QLabel()
         self.reregister_blankLabel.setText(" ")
 
-        self.reregister_noButton = QPushButton("No")
+        self.reregister_noButton = QPushButton("아니요")
 
-        self.reregister_yesButton = QPushButton("Yes")
+        self.reregister_yesButton = QPushButton("네")
 
         self.reregister_buttonLayoutV = QVBoxLayout()  # V : Vertical Box
 
@@ -555,10 +556,13 @@ class Form(QWidget):
             return
 
         else:
-            QMessageBox.information(self, "UserName Admitted", "Hello, %s" % userName)
+            QMessageBox.information(self, "UserName Admitted", "Hello, {}".format(name))
             self.allHide()
             self.capture()
-            ''' <Code> 이 곳에 입력된 사용자명을 userName 변수에 저장합니다. '''
+            userName = name
+            with open('name.txt', 'w') as f:
+                f.write(userName)
+                f.close()
 
     def username_backContact(self):
         self.allHide()
@@ -584,13 +588,13 @@ class Form(QWidget):
     def register_yesContact(self):
         self.allHide()
         self.setpassword()
-        '''<code> 찍은 사진을 facelist에 올립니다. 이는 이후에 문을 열 때 캡쳐하는 사진과 비교를 위해 사용됩니다.'''
+
 
     def setpassword_submitContact(self):
 
-        name = self.setpassword_nameLine.text()
+        password = self.setpassword_nameLine.text()
 
-        if name == "":
+        if password == "":
             QMessageBox.information(self, "Empty Field",
                                     "Please input your password properly.")
             return
@@ -598,12 +602,21 @@ class Form(QWidget):
         else:
             QMessageBox.information(self, "PrivaSee",
                                     "Register successfully done!")
+            with open('pw.txt', 'w') as f:
+                f.write(password)
+                f.close()
             self.allHide()
             self.main()
 
     def main_captureContact(self):
         '''<Code> 만약 인식된 사진이 본래 사진과 비슷하다면 (= 사용자로 인식된다면) : self.allHide()와 self.dooropen()을 호출합니다.
          / 만약 사용자가 아닌 것으로 인식된다면 : self.allHide()와 self.notyourface()를 호출합니다.'''
+        if compare() >= 0.65:
+            self.allHide()
+            self.dooropen()
+        else:
+            self.allHide()
+            self.notyourface()
 
     def main_registerContact(self):
         self.allHide()
@@ -621,6 +634,12 @@ class Form(QWidget):
         else:
             '''<code> 만약 암호가 맞다면 : self.allHide()와 self.recapture()을 호출합니다.
              / else : 암호가 다르다면 : self.allHide()와 self.notyourpassword()를 호출합니다.'''
+            if name == open('pw.txt', 'r').readline():
+                self.allHide()
+                self.recapture()
+            else:
+                self.allHide()
+                self.notyourface()
 
 
     def passwordtoregister_backContact(self):
@@ -655,8 +674,8 @@ class Form(QWidget):
                                     "Register successfully done!")
         self.allHide()
         self.main()
-        '''<code> 찍은 사진을 facelist에 올립니다. 이는 이후에 문을 열 때 캡쳐하는 사진과 비교를 위해 사용됩니다.'''
-
+        '''<code> 찍은 사진을 facelist에 올립니다. 이는 이후에 문을 열 때 캡쳐해둔 사진과 비교를 위해 사용됩니다.'''
+        getSecondImage('2.jpg')
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)

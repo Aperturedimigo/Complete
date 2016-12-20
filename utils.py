@@ -39,12 +39,7 @@ def compare():
     face_id = open('ps1.txt', 'r').readline()
     another_face_id = open('ps2.txt', 'r').readline()
     data =fa.verify(face_id, another_face_id)['confidence']
-    if data > 0.65:
-        print(data)
-        return True
-    else:
-        print(data)
-        return False
+    return data
 
 #Secure number setting
 def saveNumbers(num):
