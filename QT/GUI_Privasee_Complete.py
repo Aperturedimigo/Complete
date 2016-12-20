@@ -636,8 +636,7 @@ class Form(QWidget):
         self.passwordtoregister()
 
     def recapture_captureContact(self):
-        with picamera.Picamera as camera:
-            camera.
+
 
     def recapture_submitContact(self):
         self.allHide()
